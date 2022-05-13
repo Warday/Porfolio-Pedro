@@ -1,0 +1,98 @@
+<div class="card mat-card" id="first-card">
+    <!-- Modal -->
+    <div class="modal fade" id="headForm" tabindex="-1" aria-labelledby="headFormLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="headFormLabel">Perfil</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <form [formGroup]="headForm" (ngSubmit)="onSubmit()">
+                <input type="hidden" name="id" formControlName="id">
+    
+                <div class="row mb-1">
+                  <label for="bannerimg" class="col-sm-3 col-form-label">Banner</label>
+                  <div class="col-sm-9 col-form-label">
+                    <input type="text" name="bannerimg" formControlName="bannerimg" class="form-control" required>
+                  </div>
+                </div>
+    
+                <div class="row mb-2">
+                  <label for="name" class="col-sm-3 col-form-label">Nombre</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="name" formControlName="name" class="form-control" required>
+                  </div>
+                </div>
+                
+  
+                <div class="row mb-2">
+                  <label for="myimg" class="col-sm-3 col-form-label">Foto</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="myimg" formControlName="myimg" class="form-control" required>
+                  </div>
+                </div>
+    
+                <div class="row mb-2">
+                  <label for="work" class="col-sm-3 col-form-label">Trabajo</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="work" formControlName="work" class="form-control" required>
+                  </div>
+                </div>
+  
+                <div class="row mb-2">
+                  <label for="home" class="col-sm-3 col-form-label">Recidencia</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="home" formControlName="home" class="form-control" required>
+                  </div>
+                </div>
+                <div class="text-center">
+                    <button type="button" class="btn btn-secondary me-4" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    <div id="profile-background"><img id="info-back-img"
+        src={{headList[0].bannerimg}}>
+    </div>
+    <div id="info" style="padding: 16px">
+      <div id="info-img">
+        <img id="info-user-img" class="profile-image"
+          src={{headList[0].myimg}}>
+        <div class="btn-edit"> <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#headForm" (click)="onEditHead(0)">
+                <i class="fa fa-pen">
+            </i></button>
+    </div>
+      </div>
+      <div id="info-data">
+        <div>
+          <h1 id="info-name">{{headList[0].name}}</h1>
+          <div>{{headList[0].myimg}}</div>
+          <div id="info-contact">
+            <span id="info-ubication">Buenos Aires (Argentina) </span>
+            <span><a href="#">Información de contacto</a></span>
+          </div>
+        </div>
+        <ul id="info-details">
+          <li><a href="#">
+              <img id="info-company-img"
+                src="https://convocatorias.conicet.gov.ar/wp-content/uploads/logo-CONICET_opt.png">
+              <h2 id="info-company-name">CONICET</h2>
+            </a></li>
+          <li><a href="#">
+              <img id="info-school-img" src="https://inerciacero.files.wordpress.com/2011/07/logo-uba.png">
+              <h2 id="info-school-name">Universidad de Buenos Aires</h2>
+            </a></li>
+        </ul>
+      </div>
+      <div id="info-actions">
+        <button type="button" class="btn btn-primary me-4">Tengo interés en</button>
+        <button type="button" class="btn btn-light">Añadir Sección</button>
+        <button type="button" class="btn btn-light">Más</button>
+      </div>
+    </div>
+  </div>
