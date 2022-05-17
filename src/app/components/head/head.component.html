@@ -46,6 +46,35 @@
                     <input type="text" name="home" formControlName="home" class="form-control" required>
                   </div>
                 </div>
+
+                <div class="row mb-2">
+                  <label for="work1" class="col-sm-3 col-form-label">Lugar de Trabajo 1</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="work1" formControlName="work1" class="form-control" required>
+                  </div>
+                </div>
+
+                <div class="row mb-2">
+                  <label for="imgwork1" class="col-sm-3 col-form-label">Logo</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="imgwork1" formControlName="imgwork1" class="form-control" required>
+                  </div>
+                </div>
+
+                <div class="row mb-2">
+                  <label for="work2" class="col-sm-3 col-form-label">Lugar de Trabajo 2</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="work2" formControlName="work2" class="form-control" required>
+                  </div>
+                </div>
+
+                <div class="row mb-2">
+                  <label for="imgwork2" class="col-sm-3 col-form-label">Logo</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="imgwork2" formControlName="imgwork2" class="form-control" required>
+                  </div>
+                </div>
+
                 <div class="text-center">
                     <button type="button" class="btn btn-secondary me-4" data-bs-dismiss="modal">Close</button>
                     <button type="submit" class="btn btn-primary">Save changes</button>
@@ -56,6 +85,9 @@
           </div>
         </div>
       </div>
+
+
+
     <div id="profile-background"><img id="info-back-img"
         src={{headList[0].bannerimg}}>
     </div>
@@ -63,36 +95,41 @@
       <div id="info-img">
         <img id="info-user-img" class="profile-image"
           src={{headList[0].myimg}}>
-        <div class="btn-edit"> <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#headForm" (click)="onEditHead(0)">
-                <i class="fa fa-pen">
-            </i></button>
-    </div>
+
+
+
+        <div *ngIf="isUserLogged" class="data-control">
+            <div class="btn-edit"> <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#headForm" (click)="onEditHead(0)">
+                    <i class="fa fa-pen">
+                </i></button>
+            </div>
+        </div>
       </div>
       <div id="info-data">
         <div>
           <h1 id="info-name">{{headList[0].name}}</h1>
-          <div>{{headList[0].myimg}}</div>
+          <div>{{headList[0].work}}</div>
           <div id="info-contact">
-            <span id="info-ubication">Buenos Aires (Argentina) </span>
-            <span><a href="#">Información de contacto</a></span>
+            <span id="info-ubication">{{headList[0].home}}</span>
           </div>
         </div>
         <ul id="info-details">
           <li><a href="#">
               <img id="info-company-img"
-                src="https://convocatorias.conicet.gov.ar/wp-content/uploads/logo-CONICET_opt.png">
-              <h2 id="info-company-name">CONICET</h2>
+                src={{headList[0].imgwork1}}>
+              <h2 id="info-company-name">{{headList[0].work1}}</h2>
             </a></li>
           <li><a href="#">
-              <img id="info-school-img" src="https://inerciacero.files.wordpress.com/2011/07/logo-uba.png">
-              <h2 id="info-school-name">Universidad de Buenos Aires</h2>
+              <img id="info-school-img" src={{headList[0].imgwork2}}>
+              <h2 id="info-school-name">{{headList[0].work2}}</h2>
             </a></li>
         </ul>
       </div>
+      <!--
       <div id="info-actions">
         <button type="button" class="btn btn-primary me-4">Tengo interés en</button>
         <button type="button" class="btn btn-light">Añadir Sección</button>
         <button type="button" class="btn btn-light">Más</button>
-      </div>
+      </div> -->
     </div>
   </div>

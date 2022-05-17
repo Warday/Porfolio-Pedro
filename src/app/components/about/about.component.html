@@ -1,0 +1,49 @@
+<div class="card mat-card">
+
+  <!-- Modal -->
+  <div class="modal fade" id="aboutForm" tabindex="-1" aria-labelledby="headFormLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="headFormLabel">Acerca de:</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="aboutForm" (ngSubmit)="onSubmit()">
+            <input type="hidden" name="id" formControlName="id">
+
+            <div class="row mb-1">
+              <label for="about" class="col-sm-3 col-form-label">Acerca de</label>
+              <div class="col-sm-9 col-form-label">
+                <input type="text" name="about" formControlName="about" class="form-control" required>
+                <label for="end" class="col-sm-9 col-form-label">250 caracteres máximo.</label>
+              </div>
+            </div>
+            
+            <div class="text-center">
+                <button type="button" class="btn btn-secondary me-4" data-bs-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Save changes</button>
+              </div>
+
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+    <div class="card-titles">
+      <h2>Acerca de:</h2>
+      <div *ngIf="isUserLogged" class="data-control">
+        <div class="btn-edit"> <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#aboutForm" (click)="onEditAbout(0)">
+          <i class="fa fa-pen">
+      </i></button>
+  </div>
+    </div>
+    </div>
+    <div id="about">
+      {{aboutList[0].about}}
+    </div>
+  </div>

@@ -9,6 +9,7 @@ import { PortfolioService } from 'src/app/service/portfolio.service';
   templateUrl: './Education.component.html',
   styleUrls: ['./Education.component.css']
 })
+
 export class EducationComponent implements OnInit {
   educationList: Education[] = [];
   isUserLogged: Boolean = false;

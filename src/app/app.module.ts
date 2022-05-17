@@ -10,6 +10,10 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { LoginComponent } from './components/auth/login/login.component';
 import { HeadComponent } from './components/head/head.component';
+import { AboutComponent } from './components/about/about.component';
+import { ExperienceComponent } from './components/experience/experience.component';
+import { SkillsComponent } from './components/skills/skills.component';
+import { ProjectsComponent } from './components/projects/projects.component';
 
 
 @NgModule({
@@ -20,6 +24,10 @@ import { HeadComponent } from './components/head/head.component';
     PortfolioComponent,
     LoginComponent,
     HeadComponent,
+    AboutComponent,
+    ExperienceComponent,
+    SkillsComponent,
+    ProjectsComponent,
 
   ],
   imports: [
