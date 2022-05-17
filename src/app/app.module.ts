@@ -14,6 +14,8 @@ import { AboutComponent } from './components/about/about.component';
 import { ExperienceComponent } from './components/experience/experience.component';
 import { SkillsComponent } from './components/skills/skills.component';
 import { ProjectsComponent } from './components/projects/projects.component';
+import { PublicationsComponent } from './components/publications/publications.component';
+import { AwardsComponent } from './components/awards/awards.component';
 
 
 @NgModule({
@@ -28,6 +30,8 @@ import { ProjectsComponent } from './components/projects/projects.component';
     ExperienceComponent,
     SkillsComponent,
     ProjectsComponent,
+    PublicationsComponent,
+    AwardsComponent,
 
   ],
   imports: [
