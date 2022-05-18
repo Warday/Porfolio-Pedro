@@ -1,4 +1,4 @@
-
+<div id="skills">
 <!-- Modal -->
 <div class="modal fade" id="skillsForm" tabindex="-1" aria-labelledby="skillsFormLabel" aria-hidden="true">
   <div class="modal-dialog">
@@ -50,10 +50,9 @@
   </div>
 </div>
 
-
 <article class="card mat-card">
     <div class="card-titles">
-      <h2>Habilidades fuertes y débiles</h2>
+      <h3>Habilidades fuertes y débiles</h3>
 
       <div *ngIf="isUserLogged" class="btn-edit">
         <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#skillsForm" (click)="onNewSkills()"><i class="fa fa-plus"></i></button>
@@ -79,7 +78,7 @@
           <div><span>{{skill.comments}}</span></div>
           </a>
         </div>
-
+        
         <div *ngIf="isUserLogged" class="data-control">
           <div class="btn-edit">
             <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#skillsForm" (click)="onEditSkills(i)"><i class="fa fa-pen"></i></button>
@@ -88,7 +87,12 @@
             <button class="btn btn-right" (click)="onDeleteSkills(i)"><i class="fa fa-trash"></i></button>
           </div>
         </div>
-
       </li>
+
+      
+
     </ol>
-  </article>
+</article>
+
+
+

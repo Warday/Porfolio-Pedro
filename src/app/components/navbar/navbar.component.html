@@ -1,28 +1,30 @@
-<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark">
-    <a class="navbar-brand" href="#">Pedro Bocca</a>
+<nav class="navbar navbar-expand-lg sticky-top navbar-dark bg-dark" >
+    <a class="navbar-brand" href="#">
+      <img src="https://i.ibb.co/hc75nC4/APlogo.png" width="30" height="30" class="d-inline-block align-top" alt="">
+      Argentina programa</a>
+
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
+    <div class="collapse navbar-collapse" id="navbarSupportedContent" >
+      <ul class="navbar-nav mr-auto navbar-right">
         <li class="nav-item">
-          <a class="nav-link waves-effect waves-light">
-            <i class="grey-text fab fa-facebook-square fa-2x"></i>
+          <a class="nav-link waves-effect waves-light" href="https://www.facebook.com/Pedro.Bocca">
+            <i class="grey-text fab fa-facebook-square fa-2x" ></i>
+
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link waves-effect waves-light">
+        <li class="nav-item" >
+          <a class="nav-link waves-effect waves-light" href="">
             <i class="grey-text fab fa-instagram fa-2x"></i>
           </a>
         </li>
-        <li class="nav-item">
-          <a class="nav-link waves-effect waves-light">
-            <i class="grey-text fab fa-twitter fa-2x"></i>
-          </a>
-        </li>
+        <button *ngIf="!isUserLogged" class="btn btn-outline-success my-2 my-sm-0" routerLink="/login" >Login</button>
+        <button *ngIf="isUserLogged" class="btn btn-outline-success my-2 my-sm-0" routerLink="/logout" (click)="logout()">Logout</button>
       </ul>
-      <button *ngIf="!isUserLogged" class="btn btn-outline-success my-2 my-sm-0" routerLink="/login">Login</button>
-      <button *ngIf="isUserLogged" class="btn btn-outline-success my-2 my-sm-0" routerLink="/logout" (click)="logout()">Logout</button>
+      
     </div>
+
+
   </nav>

@@ -1,4 +1,4 @@
-<div class="card mat-card">
+
 
   <!-- Modal -->
   <div class="modal fade" id="aboutForm" tabindex="-1" aria-labelledby="headFormLabel" aria-hidden="true">
@@ -35,7 +35,7 @@
 
 
     <div class="card-titles">
-      <h2>Acerca de:</h2>
+      <h3>Acerca de:</h3>
       <div *ngIf="isUserLogged" class="data-control">
         <div class="btn-edit"> <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#aboutForm" (click)="onEditAbout(0)">
           <i class="fa fa-pen">
@@ -46,4 +46,4 @@
     <div id="about">
       {{aboutList[0].about}}
     </div>
-  </div>
+
