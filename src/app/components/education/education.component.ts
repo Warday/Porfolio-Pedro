@@ -29,6 +29,7 @@ export class EducationComponent implements OnInit {
           img: ['', [Validators.required]],
           start: ['', [Validators.required]],
           end: ['', [Validators.required]],
+          url:['', [Validators.required]],
         });
    }
 
@@ -55,7 +56,8 @@ export class EducationComponent implements OnInit {
       career: '',
       start: 0,
       end: 0,
-      img: ''
+      img: '',
+      url:''
     })
   }
 
@@ -68,7 +70,8 @@ export class EducationComponent implements OnInit {
       score: education.score,
       start: education.start,
       end: education.end,
-      img: education.img
+      img: education.img,
+      url: education.url
     })
   }
 

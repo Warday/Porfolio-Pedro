@@ -27,8 +27,10 @@ export class HeadComponent implements OnInit {
         home: ['', [Validators.required]],
         work1: ['', [Validators.required]],
         imgwork1: ['', [Validators.required]],
+        urlwork1: ['', [Validators.required]],
         work2: ['', [Validators.required]],
         imgwork2: ['', [Validators.required]],
+        urlwork2: ['', [Validators.required]],
       });
    }
 
@@ -63,8 +65,10 @@ export class HeadComponent implements OnInit {
       home: head.home,
       work1: head.work1,
       imgwork1: head.imgwork1,
-       work2: head.work2,
-      imgwork2: head.imgwork2
+      urlwork1:head.urlwork1,
+      work2: head.work2,
+      imgwork2: head.imgwork2,
+      urlwork2:head.urlwork2
     })
   }
 

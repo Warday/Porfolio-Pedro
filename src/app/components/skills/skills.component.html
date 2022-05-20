@@ -52,7 +52,7 @@
 
 <article class="card mat-card">
     <div class="card-titles">
-      <h3>Habilidades fuertes y débiles</h3>
+      <h3>Hard Skills & Soft Skills</h3>
 
       <div *ngIf="isUserLogged" class="btn-edit">
         <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#skillsForm" (click)="onNewSkills()"><i class="fa fa-plus"></i></button>
@@ -60,25 +60,17 @@
     </div>
     <ol class="items-list">
       <li *ngFor="let skill of skillsList; let i = index">
-        <div class="aptitude-info">
-          <a href="#">
-            <div><span>{{skill.name}}</span></div>
-            <div class="col-md-1 col-sm-4">
-              <div class="progress blue">
-                  <span class="progress-left">
-                      <span class="progress-bar"></span>
-                  </span>
-                  <span class="progress-right">
-                      <span class="progress-bar"></span>
-                  </span>
-                  <div class="progress-value">{{skill.percentage}}</div>
+          <div class="aptitude-info">
+
+              <p><span>{{skill.name}}</span>- {{skill.percentage}}%</p>
+              <div class="progress">
+                <div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: {{skill.percentage}}%"
+                   aria-valuemin="0" aria-valuemax="100"></div>
               </div>
+              <p><span>{{skill.comments}}</span></p>
+
           </div>
 
-          <div><span>{{skill.comments}}</span></div>
-          </a>
-        </div>
-        
         <div *ngIf="isUserLogged" class="data-control">
           <div class="btn-edit">
             <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#skillsForm" (click)="onEditSkills(i)"><i class="fa fa-pen"></i></button>

@@ -12,7 +12,6 @@ import { PortfolioService } from 'src/app/service/portfolio.service';
 export class ExperienceComponent implements OnInit {
   experienceList: Experience[] = [];
   isUserLogged: Boolean = false;
-
   experienceForm: FormGroup;
 
   constructor(
@@ -27,8 +26,8 @@ export class ExperienceComponent implements OnInit {
           place: ['', [Validators.required]],
           start:['', [Validators.required]],
           end: ['', [Validators.required]],
+          diff:['', [Validators.required]],
           img: ['', [Validators.required]],
-
         });
    }
 
@@ -54,6 +53,7 @@ export class ExperienceComponent implements OnInit {
       worktime: '',
       start: 0,
       end: 0,
+      diff: '',
       place: '',
       img: ''
     })
@@ -67,6 +67,7 @@ export class ExperienceComponent implements OnInit {
       worktime: experience.worktime,
       start: experience.start,
       end: experience.end,
+      diff: experience.diff,
       place: experience.place,
       img: experience.img
     })
@@ -109,5 +110,21 @@ export class ExperienceComponent implements OnInit {
     }
   }
 
+  calc(div1Num:number, div2Num:number) {
+    //get first number
+  
+    //make the calculation
+    var result = div1Num - div2Num;
+    //return the result
+    return "el valor es:"+result;}
+  
 }
 
+
+function calc(div1Num:number, div2Num:number) {
+  //get first number
+
+  //make the calculation
+  var result = div1Num - div2Num;
+  //return the result
+  return result;}

@@ -60,6 +60,12 @@
                     <input type="text" name="imgwork1" formControlName="imgwork1" class="form-control" required>
                   </div>
                 </div>
+                <div class="row mb-2">
+                  <label for="urlwork1" class="col-sm-3 col-form-label">URL</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="urlwork1" formControlName="urlwork1" class="form-control" required>
+                  </div>
+                </div>
 
                 <div class="row mb-2">
                   <label for="work2" class="col-sm-3 col-form-label">Lugar de Trabajo 2</label>
@@ -72,6 +78,13 @@
                   <label for="imgwork2" class="col-sm-3 col-form-label">Logo</label>
                   <div class="col-sm-9">
                     <input type="text" name="imgwork2" formControlName="imgwork2" class="form-control" required>
+                  </div>
+                </div>
+
+                <div class="row mb-2">
+                  <label for="urlwork2" class="col-sm-3 col-form-label">URL</label>
+                  <div class="col-sm-9">
+                    <input type="text" name="urlwork2" formControlName="urlwork2" class="form-control" required>
                   </div>
                 </div>
 
@@ -114,15 +127,15 @@
           </div>
         </div>
         <ul id="info-details">
-          <li><a href="#">
+          <li><a href={{headList[0].urlwork1}}>
               <img id="info-company-img"
                 src={{headList[0].imgwork1}}>
               <h2 id="info-company-name">{{headList[0].work1}}</h2>
             </a></li>
-          <li><a href="#">
+          <li><a href={{headList[0].urlwork2}}>
               <img id="info-school-img" src={{headList[0].imgwork2}}>
-              <h2 id="info-school-name">{{headList[0].work2}}</h2>
-            </a></li>
+              <h2 id="info-school-name">{{headList[0].work2}}</h2></a>
+            </li>
         </ul>
       </div>
       <!--
@@ -133,3 +146,4 @@
       </div> -->
     </div>
   </div>
+  

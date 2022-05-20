@@ -3,5 +3,5 @@ export interface Publications {
     place: string,
     title: string,
     year: number,
-    DOI: string
+    doi: string
 }

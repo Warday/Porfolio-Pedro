@@ -6,5 +6,6 @@ export interface Experience {
     place: string,
     start: string,
     end: number,
-    img: number
+    diff:string,
+    img: string
 }

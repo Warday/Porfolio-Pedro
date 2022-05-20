@@ -34,9 +34,9 @@
               </div>
   
               <div class="row mb-3">
-                <label for="DOI" class="col-sm-2 col-form-label">DOI</label>
+                <label for="doi" class="col-sm-2 col-form-label">DOI</label>
                 <div class="col-sm-10">
-                  <input type="text" name="DOI" formControlName="DOI" class="form-control" required>
+                  <input type="text" name="doi" formControlName="doi" class="form-control" required>
                 </div>
               </div>
   
@@ -59,18 +59,18 @@
       </div>
     </div>
     <div>
-      <ul class="items-list" id="eduList">
+      <ul class="items-list" id="pubList">
         <li *ngFor="let publication of publicationsList; let i = index">
           <div class="data-container">
-            <a href="#">
+
               <div class="list-info">
                 <div>
                   <h3>{{ publication.title }} </h3>
                   <p><span>{{ publication.place }}</span> - <span>{{ publication.year }}</span></p>
-                  <p><span>DOI={{ publication.DOI }}</span></p>
+                  <a href={{publication.doi}}><p><span>DOI={{ publication.doi }}</span></p></a>
                 </div>
               </div>
-            </a>
+
           </div>
           <div *ngIf="isUserLogged" class="data-control">
             <div class="btn-edit">

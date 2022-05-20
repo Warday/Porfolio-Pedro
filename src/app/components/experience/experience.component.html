@@ -53,6 +53,14 @@
               <label for="end" class="col-sm-5 col-form-label">0=A la actualidad</label>
             </div>
           </div>
+
+          <div class="row mb-3">
+            <label for="diff" class="col-sm-3 col-form-label">Tiempo de trabajo</label>
+            <div class="col-sm-9">
+              <input type="text" name="diff" formControlName="diff" class="form-control" required>
+  
+            </div>
+          </div>
          
           <div class="row mb-3">
             <label for="score" class="col-sm-2 col-form-label">Imagen</label>
@@ -86,7 +94,7 @@
       <ul class="items-list" id="eduList">
         <li *ngFor="let experience of experienceList; let i = index">
           <div class="data-container">
-            <a href="#">
+            <a >
               <div class="logo-image-container"><img id="edu-img" class="logo-image"
                   src={{experience.img}}></div>
               <div class="list-info">
@@ -94,6 +102,8 @@
                   <h3 id="edu-school">{{ experience.company }} </h3>
                   <p><span id="edu-title">{{ experience.level }}</span> - <span id="edu-title">{{ experience.worktime }}</span></p>
                   <p><time id="edu-start">{{ experience.start }}</time> - <time id="edu-end" *ngIf="experience.end>0; else actual">{{ experience.end }}</time></p>
+                  {{calc(100,2)}}
+
                   <ng-template #actual>
                     <time id="edu-end"> A la actualidad</time>
                   </ng-template>
@@ -113,32 +123,4 @@
         </li>
       </ul>
     </div>
-    <div>
-      <ul class="items-list" id="expList">
-        <li>
-          <div class="data-container">
-            <a href="#">
-              <div class="logo-image-container"><img id="exp-img" class="logo-image"
-                  src=></div>
-              <div class="list-info">
-                <div>
-                  <h3 id="exp-position">Backend Developer</h3>
-                  <p><span id="exp-company">Pixar</span> - <span id="exp-mode">Jornada parcial</span></p>
-                  <h4><span id="exp-initial">mar 2019</span> – <span id="exp-end">actualidad</span> - <span
-                      id="exp-time">2 años y 6 meses</span></h4>
-                  <h4 id="exp-place">Guadalajara y alrededores, México</h4>
-                </div>
-              </div>
-            </a>
-          </div>
-          <div class="data-control">
-            <div class="btn-edit"><a href="#" class="btn-right"><i class="fa fa-pen"
-                  onclick="showEditExpModal('Pixar')"></i></a></div>
-            <div class="btn-edit"><a href="#" class="btn-right"><i class="fa fa-trash"
-                  onclick="deleteExp('Pixar')"></i></a></div>
-          </div>
-        </li>
-      </ul>
-    </div>
-
   </div></article>

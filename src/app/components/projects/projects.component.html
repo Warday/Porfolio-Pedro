@@ -43,13 +43,27 @@
       <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#projectsForm" (click)="onNewProjects()"><i class="fa fa-plus"></i></button>
     </div>
   </div>
-  <div class="achivements">
-    <ul class="items-list">
+  <div>
+    <ul class="items-list" id="proList">
       <li *ngFor="let project of projectsList; let i = index">
-        <h3>{{project.name}}</h3>
-        <div>
-          {{project.description}}
+        <div class="data-container">
+
+            <div class="list-info">
+              <h3>{{project.name}}</h3>
+              <p><span>{{project.description}}</span></p>
+            </div>
+
         </div>
+        <div *ngIf="isUserLogged" class="data-control">
+          <div class="btn-edit">
+            <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#projectsForm" (click)="onEditProjects(i)"><i class="fa fa-pen"></i></button>
+          </div>
+          <div class="btn-edit">
+            <button class="btn btn-right" (click)="onDeleteProjects(i)"><i class="fa fa-trash"></i></button>
+          </div>
+        </div>
+        
+        
       </li>
     </ul>
   </div>

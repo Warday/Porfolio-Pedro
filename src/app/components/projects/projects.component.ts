@@ -78,7 +78,7 @@ export class ProjectsComponent implements OnInit {
     this.clearForm();
   }
 
-  onEditProjectsn(index: number) {
+  onEditProjects(index: number) {
     let projects: Projects = this.projectsList[index];
     this.loadForm(projects);
   }
