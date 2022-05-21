@@ -40,25 +40,21 @@
           </div>
 
           <div class="row mb-3">
+            <label class="col-sm-10 col-form-label">Fornmato de las fechas es: (yyyy-mm-dd)</label>
+          </div>
+
+          <div class="row mb-3">
             <label for="start" class="col-sm-2 col-form-label">Inicio</label>
             <div class="col-sm-10">
-              <input type="number" name="start" formControlName="start" class="form-control" required>
+              <input type="text" name="start" formControlName="start" class="form-control" required>
             </div>
           </div>
 
           <div class="row mb-3">
             <label for="end" class="col-sm-2 col-form-label">Fin</label>
             <div class="col-sm-10">
-              <input type="number" name="end" formControlName="end" class="form-control" required>
+              <input type="text" name="end" formControlName="end" class="form-control" required>
               <label for="end" class="col-sm-5 col-form-label">0=A la actualidad</label>
-            </div>
-          </div>
-
-          <div class="row mb-3">
-            <label for="diff" class="col-sm-3 col-form-label">Tiempo de trabajo</label>
-            <div class="col-sm-9">
-              <input type="text" name="diff" formControlName="diff" class="form-control" required>
-  
             </div>
           </div>
          
@@ -101,11 +97,11 @@
                 <div>
                   <h3 id="edu-school">{{ experience.company }} </h3>
                   <p><span id="edu-title">{{ experience.level }}</span> - <span id="edu-title">{{ experience.worktime }}</span></p>
-                  <p><time id="edu-start">{{ experience.start }}</time> - <time id="edu-end" *ngIf="experience.end>0; else actual">{{ experience.end }}</time></p>
-                  {{calc(100,2)}}
+                  <p *ngIf="experience.end != '0'; else actual"><time id="edu-start">Desde el {{experience.start}}</time> hasta el <time id="edu-end" >{{ experience.end }}</time></p>
+                  <p>{{calc(experience.start, experience.end )}}</p>
 
                   <ng-template #actual>
-                    <time id="edu-end"> A la actualidad</time>
+                    <time id="edu-start">Desde el {{experience.start}}</time><time id="edu-end">a la actualidad</time>
                   </ng-template>
                   <p><span id="edu-title">{{ experience.place }}</span></p>
                 </div>

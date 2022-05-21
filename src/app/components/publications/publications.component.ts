@@ -25,6 +25,7 @@ export class PublicationsComponent implements OnInit {
           title: ['', [Validators.required]],
           year: ['', [Validators.required]],
           doi: ['', [Validators.required]],
+          doiurl: ['', [Validators.required]],
         });
    }
 
@@ -48,7 +49,8 @@ export class PublicationsComponent implements OnInit {
       place: '',
       title: '',
       year: 0,
-      doi: ''
+      doi: '',
+      doiurl: ''
     })
   }
 
@@ -58,7 +60,8 @@ export class PublicationsComponent implements OnInit {
       place: publications.place,
       title: publications.title,
       year: publications.year,
-      doi: publications.doi
+      doi: publications.doi,
+      doiurl: publications.doiurl
     })
   }
 

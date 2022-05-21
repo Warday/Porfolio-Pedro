@@ -5,7 +5,7 @@ export interface Experience {
     worktime: string,
     place: string,
     start: string,
-    end: number,
+    end: string,
     diff:string,
     img: string
 }

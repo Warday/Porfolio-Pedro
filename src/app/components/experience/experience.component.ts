@@ -51,8 +51,8 @@ export class ExperienceComponent implements OnInit {
       company: '',
       level: '',
       worktime: '',
-      start: 0,
-      end: 0,
+      start: 'yyyy-mm-dd',
+      end: 'yyyy-mm-dd',
       diff: '',
       place: '',
       img: ''
@@ -110,21 +110,95 @@ export class ExperienceComponent implements OnInit {
     }
   }
 
-  calc(div1Num:number, div2Num:number) {
-    //get first number
   
+
+  calc(div1Num:string, div2Num:string) {
+    //get first number
     //make the calculation
-    var result = div1Num - div2Num;
+    
+    if( div2Num == "0"){
+      var today = new Date();
+      var date =""
+      var dd = String(today.getDate()).padStart(2, '0');
+      var mm = String(today.getMonth() + 1).padStart(2, '0'); //January is 0!
+      var yyyy = today.getFullYear();
+      div2Num = yyyy + '-' + mm + '-' + dd;
+    }
+    var diff = dateDiff(div1Num, div2Num);
+
+
+    //make the calculation
     //return the result
-    return "el valor es:"+result;}
+    return diff;}
   
 }
 
+function dateDiff(startingDate:string, endingDate:string) {
+  var startDate = new Date(new Date(startingDate).toISOString().substr(0, 10));
+  if (!endingDate) {
+    endingDate = new Date().toISOString().substr(0, 10); // need date in YYYY-MM-DD format
+  }
+  var endDate = new Date(endingDate);
+  if (startDate > endDate) {
+    var swap = startDate;
+    startDate = endDate;
+    endDate = swap;
+  }
+  var startYear = startDate.getFullYear();
+  var february = (startYear % 4 === 0 && startYear % 100 !== 0) || startYear % 400 === 0 ? 29 : 28;
+  var daysInMonth = [31, february, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
 
-function calc(div1Num:number, div2Num:number) {
-  //get first number
+  var yearDiff = endDate.getFullYear() - startYear;
+  var monthDiff = endDate.getMonth() - startDate.getMonth();
+  if (monthDiff < 0) {
+    yearDiff--;
+    monthDiff += 12;
+  }
+  var dayDiff = endDate.getDate() - startDate.getDate();
+  if (dayDiff < 0) {
+    if (monthDiff > 0) {
+      monthDiff--;
+    } else {
+      yearDiff--;
+      monthDiff = 11;
+    }
+    dayDiff += daysInMonth[startDate.getMonth()];
+  }
+  if (monthDiff == 1){
+    var mes= ' mes.'
+  }
+  else{
+    var mes= ' meses.'
+  }
+  if (yearDiff == 1){
+    var year= ' año '
+  }
+  else{
+    var year= ' años'
+  }
+  if (monthDiff > 0){
+    var timemonth = monthDiff+ mes;
+  }
+  else{
+    var timemonth = '.';
+  }
 
-  //make the calculation
-  var result = div1Num - div2Num;
-  //return the result
-  return result;}
+  if (yearDiff > 0){
+    var timeyear = yearDiff + year ;
+    }
+    else{
+      var timeyear =  '';
+    }
+  if (yearDiff > 0 && monthDiff > 0){
+    var conector = ' y '
+  }
+  else{
+    var conector = ''
+  }
+  
+
+  return 'Se trabajó durante '+ timeyear + conector + timemonth;
+
+
+  
+}

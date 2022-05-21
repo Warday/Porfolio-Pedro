@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Education } from '../data/education';
 import { Head } from '../data/head';
+import { Navbar } from '../data/navbar';
 import { About } from '../data/about';
 import { Experience } from '../data/experience';
 import { Skills } from '../data/skills';
@@ -140,6 +141,12 @@ export class PortfolioService {
 
   eraseAwards(id: number): Observable<any> {
     return this.http.delete<any>(config.baseUrl + "awards/" + id);
+  }
+
+
+
+  getDattaNavbar(): Observable<Navbar[]> {
+    return this.http.get<any>(config.baseUrl + "navbar");
   }
 
 
