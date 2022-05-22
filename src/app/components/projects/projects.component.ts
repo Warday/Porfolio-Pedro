@@ -22,7 +22,9 @@ export class ProjectsComponent implements OnInit {
       this.projectsForm = this.formBuilder.group({
           id: [''],
           name: ['', [Validators.required]],
-          description: ['', [Validators.required]]
+          description: ['', [Validators.required]],
+          year: ['', [Validators.required]],
+          link: ['', [Validators.required]]
 
         });
    }
@@ -46,6 +48,8 @@ export class ProjectsComponent implements OnInit {
       id: '',
       name: '',
       description: '',
+      year:0,
+      link:''
     })
   }
 
@@ -53,7 +57,9 @@ export class ProjectsComponent implements OnInit {
     this.projectsForm.setValue({
       id: projects.id,
       name: projects.name,
-      description: projects.description
+      description: projects.description,
+      year:projects.year,
+      link:projects.link
     })
   }
 

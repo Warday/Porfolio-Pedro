@@ -1,3 +1,6 @@
 export const config = {
-    baseUrl: "http://localhost:8080/"
+    
+    baseUrl: "https://protected-hollows-41780.herokuapp.com/"
 }
+//"https://protected-hollows-41780.herokuapp.com/"
+//"http://localhost:8080/"

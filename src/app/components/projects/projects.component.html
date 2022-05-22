@@ -16,12 +16,25 @@
               <input type="text" name="name" formControlName="name" class="form-control" required>
             </div>
           </div>
-
           <div class="row mb-3">
             <label for="description" class="col-sm-2 col-form-label">Descripción</label>
             <div class="col-sm-10">
               <input type="text" name="description" formControlName="description" class="form-control" required>
-              <label for="end" class="col-sm-9 col-form-label">250 caracteres máximo.</label>
+              <label for="description" class="col-sm-9 col-form-label">250 caracteres máximo.</label>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <label for="year" class="col-sm-2 col-form-label">Año</label>
+            <div class="col-sm-10">
+              <input type="number" name="year" formControlName="year" class="form-control" required>
+              <label for="end" class="col-sm-9 col-form-label">0=A la actualidad.</label>
+            </div>
+          </div>
+
+          <div class="row mb-3">
+            <label for="link" class="col-sm-2 col-form-label">Link</label>
+            <div class="col-sm-10">
+              <input type="text" name="link" formControlName="link" class="form-control" required>
             </div>
           </div>
           <div class="text-center">
@@ -38,7 +51,7 @@
 
 <article class="card mat-card">
   <div class="card-titles">
-    <h3>Proyectos</h3>
+    <h2>Proyectos</h2>
     <div *ngIf="isUserLogged" class="btn-edit">
       <button class="btn btn-right" data-bs-toggle="modal" data-bs-target="#projectsForm" (click)="onNewProjects()"><i class="fa fa-plus"></i></button>
     </div>
@@ -47,12 +60,16 @@
     <ul class="items-list" id="proList">
       <li *ngFor="let project of projectsList; let i = index">
         <div class="data-container">
+          <a href={{project.link}}>
 
             <div class="list-info">
-              <h3>{{project.name}}</h3>
+              <h3>{{project.name}}<span *ngIf="project.year>0; else actual"><time id="edu-end"> finalizado en {{project.year}} </time></span></h3>
               <p><span>{{project.description}}</span></p>
             </div>
-
+          </a>
+          <ng-template #actual>
+            <time id="edu-end"> en desarrollo</time>
+          </ng-template>
         </div>
         <div *ngIf="isUserLogged" class="data-control">
           <div class="btn-edit">

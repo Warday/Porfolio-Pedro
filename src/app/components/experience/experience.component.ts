@@ -3,6 +3,7 @@ import { Form, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Experience } from 'src/app/data/experience';
 import { AuthService } from 'src/app/service/auth.service';
 import { PortfolioService } from 'src/app/service/portfolio.service';
+
 @Component({
   selector: 'app-experience',
   templateUrl: './experience.component.html',
@@ -26,8 +27,8 @@ export class ExperienceComponent implements OnInit {
           place: ['', [Validators.required]],
           start:['', [Validators.required]],
           end: ['', [Validators.required]],
-          diff:['', [Validators.required]],
-          img: ['', [Validators.required]],
+          about:['', [Validators.required]],
+          img: ['', [Validators.required]]
         });
    }
 
@@ -51,26 +52,30 @@ export class ExperienceComponent implements OnInit {
       company: '',
       level: '',
       worktime: '',
+      place: '',
       start: 'yyyy-mm-dd',
       end: 'yyyy-mm-dd',
-      diff: '',
-      place: '',
+      about: '',
       img: ''
     })
+    //console.log("experience");
   }
 
   private loadForm(experience: Experience) {
+    
     this.experienceForm.setValue({
       id: experience.id,
       company: experience.company,
       level: experience.level,
       worktime: experience.worktime,
+      place: experience.place,
       start: experience.start,
       end: experience.end,
-      diff: experience.diff,
-      place: experience.place,
+      about: experience.about,
       img: experience.img
     })
+    //console.log(experience);
+
   }
 
   onSubmit() {
@@ -96,6 +101,8 @@ export class ExperienceComponent implements OnInit {
 
   onEditExperience(index: number) {
     let experience: Experience = this.experienceList[index];
+    //console.log(index);
+    //console.log(experience);
     this.loadForm(experience);
   }
 
@@ -113,9 +120,7 @@ export class ExperienceComponent implements OnInit {
   
 
   calc(div1Num:string, div2Num:string) {
-    //get first number
-    //make the calculation
-    
+   
     if( div2Num == "0"){
       var today = new Date();
       var date =""
@@ -124,81 +129,77 @@ export class ExperienceComponent implements OnInit {
       var yyyy = today.getFullYear();
       div2Num = yyyy + '-' + mm + '-' + dd;
     }
-    var diff = dateDiff(div1Num, div2Num);
-
-
-    //make the calculation
-    //return the result
+    var diff = this.dateDiff(div1Num, div2Num);
     return diff;}
+
+    dateDiff(startingDate:string, endingDate:string) {
+      var startDate = new Date(new Date(startingDate).toISOString().substr(0, 10));
+      if (!endingDate) {
+        endingDate = new Date().toISOString().substr(0, 10); // need date in YYYY-MM-DD format
+      }
+      var endDate = new Date(endingDate);
+      if (startDate > endDate) {
+        var swap = startDate;
+        startDate = endDate;
+        endDate = swap;
+      }
+      var startYear = startDate.getFullYear();
+      var february = (startYear % 4 === 0 && startYear % 100 !== 0) || startYear % 400 === 0 ? 29 : 28;
+      var daysInMonth = [31, february, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    
+      var yearDiff = endDate.getFullYear() - startYear;
+      var monthDiff = endDate.getMonth() - startDate.getMonth();
+      if (monthDiff < 0) {
+        yearDiff--;
+        monthDiff += 12;
+      }
+      var dayDiff = endDate.getDate() - startDate.getDate();
+      if (dayDiff < 0) {
+        if (monthDiff > 0) {
+          monthDiff--;
+        } else {
+          yearDiff--;
+          monthDiff = 11;
+        }
+        dayDiff += daysInMonth[startDate.getMonth()];
+      }
+      if (monthDiff == 1){
+        var month= ' mes.'
+      }
+      else{
+        var month= ' meses.'
+      }
+      if (yearDiff == 1){
+        var year= ' año '
+      }
+      else{
+        var year= ' años'
+      }
+      if (monthDiff > 0){
+        var timemonth = monthDiff+ month;
+      }
+      else{
+        var timemonth = '.';
+      }
+    
+      if (yearDiff > 0){
+        var timeyear = yearDiff + year ;
+        }
+        else{
+          var timeyear =  '';
+        }
+      if (yearDiff > 0 && monthDiff > 0){
+        var conector = ' y '
+      }
+      else{
+        var conector = ''
+      }
+          
+      return 'Se trabajó durante '+ timeyear + conector + timemonth;
+    
+    
+      
+    }
   
 }
 
-function dateDiff(startingDate:string, endingDate:string) {
-  var startDate = new Date(new Date(startingDate).toISOString().substr(0, 10));
-  if (!endingDate) {
-    endingDate = new Date().toISOString().substr(0, 10); // need date in YYYY-MM-DD format
-  }
-  var endDate = new Date(endingDate);
-  if (startDate > endDate) {
-    var swap = startDate;
-    startDate = endDate;
-    endDate = swap;
-  }
-  var startYear = startDate.getFullYear();
-  var february = (startYear % 4 === 0 && startYear % 100 !== 0) || startYear % 400 === 0 ? 29 : 28;
-  var daysInMonth = [31, february, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
-
-  var yearDiff = endDate.getFullYear() - startYear;
-  var monthDiff = endDate.getMonth() - startDate.getMonth();
-  if (monthDiff < 0) {
-    yearDiff--;
-    monthDiff += 12;
-  }
-  var dayDiff = endDate.getDate() - startDate.getDate();
-  if (dayDiff < 0) {
-    if (monthDiff > 0) {
-      monthDiff--;
-    } else {
-      yearDiff--;
-      monthDiff = 11;
-    }
-    dayDiff += daysInMonth[startDate.getMonth()];
-  }
-  if (monthDiff == 1){
-    var mes= ' mes.'
-  }
-  else{
-    var mes= ' meses.'
-  }
-  if (yearDiff == 1){
-    var year= ' año '
-  }
-  else{
-    var year= ' años'
-  }
-  if (monthDiff > 0){
-    var timemonth = monthDiff+ mes;
-  }
-  else{
-    var timemonth = '.';
-  }
-
-  if (yearDiff > 0){
-    var timeyear = yearDiff + year ;
-    }
-    else{
-      var timeyear =  '';
-    }
-  if (yearDiff > 0 && monthDiff > 0){
-    var conector = ' y '
-  }
-  else{
-    var conector = ''
-  }
-  
-
-  return 'Se trabajó durante '+ timeyear + conector + timemonth;
-
-
-  
-}

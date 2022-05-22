@@ -9,10 +9,10 @@ import { PortfolioService } from 'src/app/service/portfolio.service';
   templateUrl: './awards.component.html',
   styleUrls: ['./awards.component.css']
 })
+
 export class AwardsComponent implements OnInit {
   awardsList: Awards[] = [];
   isUserLogged: Boolean = false;
-
   awardsForm: FormGroup;
 
   constructor(
